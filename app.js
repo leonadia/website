@@ -18,8 +18,6 @@ mongoose.connect(
 );
 
 
-const connection = mongoose.connection;
-
 
 app.use('/guanli', guanliRoutes)
 
