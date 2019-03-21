@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 
 const dataSchema = mongoose.Schema({
-    _id: mongoose.Types.ObjectId,
-    title: String,
-    content: String,
+    title: {type: String, required: true},
+    content: {type: String, required: true},
     date: { type: Date, default: Date.now }
 })
 
