@@ -7,43 +7,12 @@ exports.AddData = (req, res, next) => {
       title: req.body.title,
       content: req.body.content,
     });
-    data
-      .save()
-      .then(createdData => {
-        res.status(200).json({
-          message: "Post added successfully",
-          post: {
-            ...createdData,
-            id: createdData._id
-          }
-        });
-      })
-      .catch(error => {
-          console.log(error)
-        res.status(500).json({
-          message: "Creating a post failed!"
-        });
-      });
+    DS.insert(data,res);
+
   };
 
   exports.getData = (req, res, next) => {
-    const dataQuery = Data.find();
-    let fetchedData;
-    dataQuery
-      .then(documents => {
-        fetchedData = documents;
-        return Data.count();
-      })
-      .then(count => {
-        res.status(200).json({
-          message: "Posts fetched successfully!",
-          posts: fetchedData,
-          maxPosts: count
-        });
-      })
-      .catch(error => {
-        res.status(500).json({
-          message: "Fetching posts failed!"
-        });
-      });
+    const data = Data.find();
+    DS.get(data,res);
+    
   };
