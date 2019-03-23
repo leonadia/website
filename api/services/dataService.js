@@ -1,5 +1,3 @@
-const Data = require('../models/data')
-
 exports.insert = (data,res) => {
     data
       .save()
@@ -21,11 +19,13 @@ exports.insert = (data,res) => {
 };
 
 exports.get = (data, res) => {
+
     let fetchedData;
     data
+    .find()
     .then(documents => {
       fetchedData = documents;
-      return Data.countDocuments();
+      return data.countDocuments();
     })
     .then(count => {
       res.status(200).json({
@@ -35,8 +35,56 @@ exports.get = (data, res) => {
       });
     })
     .catch(error => {
+      console.log(error)
       res.status(500).json({
         message: "Fetching posts failed!"
       });
     });
+}
+
+exports.delete = (data, id, res) => {
+        data
+        .deleteOne({_id: id})
+        .then(result => {
+            if(result.n > 0) {
+              res.status(200).json({
+                  message: "succsufully delete the data"
+              })
+            }
+            else {
+              res.status(201).json({
+                message: "something went wrong"
+              })
+            }
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({
+                message: "someting going wrong"
+            })
+        })
+}
+
+exports.update = (data,id,updata,res) => {
+  data
+  .updateOne({_id: id},updata)
+  .then(result => {
+    if(result.n > 0) {
+      res.status(200).json({
+          message: "succsufully updata the data"
+      })
+    }
+    else {
+      console.log(result)
+      res.status(201).json({
+        message: "something went wrong"
+      })
+    }
+})
+.catch(err => {
+    console.log(err)
+    res.status(500).json({
+        message: "someting going wrong"
+    })
+})
 }

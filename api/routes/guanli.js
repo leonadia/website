@@ -1,10 +1,11 @@
 const express = require('express')
-
-const router = express.Router()
 const DC = require('../controller/dataController')
 
-router.get('/', DC.getData);
+const router = express.Router();
 
-router.post("/", DC.AddData)
+router.get("/", DC.getData);
+router.post("/", DC.AddData);
+router.delete("/", DC.DeleteData);
+router.put("/", DC.UpdateData)
 
 module.exports = router;
