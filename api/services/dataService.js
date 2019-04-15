@@ -11,7 +11,7 @@ exports.insert = (data,res) => {
         });
       })
       .catch(error => {
-          console.log(error)
+
         res.status(500).json({
           message: "Creating a post failed!"
         });
@@ -30,7 +30,7 @@ exports.get = (data, res) => {
     .then(count => {
       res.status(200).json({
         message: "Posts fetched successfully!",
-        posts: fetchedData,
+        datas: fetchedData,
         maxPosts: count
       });
     })
