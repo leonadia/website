@@ -9,7 +9,7 @@ const app = express();
 
 mongoose
     .connect(
-        'mongodb://localhost/shujv',
+      'mongodb://heroku_lg8l5kwt:zheshimima123@ds253804.mlab.com:53804/heroku_lg8l5kwt',
         { useNewUrlParser: true },
         (err)=> {
             if(err === null) {
@@ -22,7 +22,7 @@ mongoose
     );
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");

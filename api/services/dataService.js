@@ -4,7 +4,7 @@ exports.insert = (data,res) => {
       .then(createdData => {
         res.status(200).json({
           message: "Post added successfully",
-          post: {
+          datas: {
             ...createdData,
             id: createdData._id
           }
@@ -30,7 +30,7 @@ exports.get = (data, res) => {
     .then(count => {
       res.status(200).json({
         message: "Posts fetched successfully!",
-        posts: fetchedData,
+        datas: fetchedData,
         maxPosts: count
       });
     })
