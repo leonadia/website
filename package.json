@@ -13,7 +13,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "test",
-    "start": "nodemon server.js"
+    "dev-start": "nodemon server.js",
+    "start": "node server.js"
   },
   "author": "leonadia",
   "license": "ISC"
