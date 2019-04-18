@@ -9,6 +9,7 @@ exports.AddData = (req, res, next) => {
       content: req.body.content,
       status: req.body.status
     });
+    console.log(req.body)
     DS.insert(data,res);
 
   };
@@ -34,5 +35,6 @@ exports.AddData = (req, res, next) => {
       status: req.body.status
     });
     const id = req.query.id;
+    console.log(id);
     DS.update(data,id,updata,res);
   }
