@@ -9,7 +9,7 @@ const app = express();
 
 mongoose
     .connect(
-      'mongodb://heroku_lg8l5kwt:zheshimima123@ds253804.mlab.com:53804/heroku_lg8l5kwt',
+      'mongodb://leonadia:zheshimima123@ds253804.mlab.com:53804/heroku_lg8l5kwt',
         { useNewUrlParser: true },
         (err)=> {
             if(err === null) {
