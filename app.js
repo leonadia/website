@@ -37,6 +37,6 @@ app.use((req, res, next) => {
     next();
   });
 
-app.use('/guanli', guanliRoutes)
+app.use('/', guanliRoutes)
 
 module.exports = app;
