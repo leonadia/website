@@ -8,6 +8,20 @@ var cors = require('cors');
 
 const app = express();
 
+mongoose
+    .connect(
+      'mongodb://leonadia:zheshimima123@ds253804.mlab.com:53804/heroku_lg8l5kwt',
+        { useNewUrlParser: true },
+        (err)=> {
+            if(err === null) {
+                console.log('connected');
+            }
+            else {
+                console.log(err);
+            }
+        }
+    );
+    
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -23,22 +37,6 @@ app.use((req, res, next) => {
   );
   next();
 });
-
-
-mongoose
-    .connect(
-      'mongodb://leonadia:zheshimima123@ds253804.mlab.com:53804/heroku_lg8l5kwt',
-        { useNewUrlParser: true },
-        (err)=> {
-            if(err === null) {
-                console.log('connected');
-            }
-            else {
-                console.log(err);
-            }
-        }
-    );
-
 
 
 app.use('/guanli', guanliRoutes)
