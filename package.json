@@ -18,5 +18,8 @@
     "start": "node server.js"
   },
   "author": "leonadia",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "8.11.1"
+  }
 }
