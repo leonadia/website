@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 
 
 const guanliRoutes = require('./api/routes/guanli');
-var cors = require('cors');
+const yonghuRoutes = require('./api/routes/yonghu');
 
 const app = express();
 
@@ -40,5 +40,6 @@ app.use((req, res, next) => {
 
 
 app.use('/guanli', guanliRoutes)
+app.use('/yonghu', yonghuRoutes)
 
 module.exports = app;

@@ -2,8 +2,6 @@ const DS = require('../services/dataService')
 const Data = require('../models/data')
 
 exports.AddData = (req, res, next) => {
-
-    console.log(req.body.params)
     const data = new Data({
       title: req.body.title,
       content: req.body.content,

@@ -1,11 +1,12 @@
 const express = require('express')
 const DC = require('../controller/dataController')
+const checkAuth = require('../middleware/check-auth');
 
 const router = express.Router();
 
 router.get("/", DC.getData);
-router.post("/", DC.AddData);
-router.delete("/", DC.DeleteData);
-router.put("/", DC.UpdateData)
+router.post("/", checkAuth,DC.AddData);
+router.delete("/", checkAuth,DC.DeleteData);
+router.put("/", checkAuth,DC.UpdateData)
 
 module.exports = router;
