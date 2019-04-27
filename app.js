@@ -21,6 +21,20 @@ mongoose
             }
         }
     );
+
+// mongoose
+//     .connect(
+//       'mongodb://localhost/data',
+//         { useNewUrlParser: true },
+//         (err)=> {
+//             if(err === null) {
+//                 console.log('connected');
+//             }
+//             else {
+//                 console.log(err);
+//             }
+//         }
+//     );
     
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

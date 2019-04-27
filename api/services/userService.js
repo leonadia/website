@@ -1,5 +1,5 @@
-const sha256 = require('sha256');
 const jwt = require('jsonwebtoken')
+const sha256 = require('sha256')
 
 exports.create = (user, res) => {
     user
@@ -24,7 +24,6 @@ exports.login = (model,user, res) => {
     model.findOne({nameAndPsword: user.nameAndPsword})
     .then(user => {
         if(!user) {
-            console.log(user.nameAndPsword)
             return res.status(401).json({
                 message:"user name or password is wrong!"
             });
@@ -39,14 +38,15 @@ exports.login = (model,user, res) => {
             });
         }
         const token = jwt.sign(
-            {nameAndPsword: fetchedUser.nameAndPsword, userId: fetchedUser._id},
-            user.nameAndPsword,
+            {name: fetchedUser.name, userId: fetchedUser._id},
+            sha256(user.name),
             {expiresIn:"1h"}
         );
         res.status(200).json({
             token: token,
             expiresIn: 3600,
-            userId: fetchedUser._id
+            userId: fetchedUser._id,
+            name:fetchedUser.name
         });
     })
     .catch(err => {

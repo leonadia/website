@@ -5,7 +5,8 @@ exports.AddData = (req, res, next) => {
     const data = new Data({
       title: req.body.title,
       content: req.body.content,
-      status: req.body.status
+      status: req.body.status,
+      creator: req.userData.userId
     });
     console.log(req.body)
     DS.insert(data,res);
