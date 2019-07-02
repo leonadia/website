@@ -31,7 +31,7 @@ exports.get = (data, res) => {
       res.status(200).json({
         message: "Posts fetched successfully!",
         datas: fetchedData,
-        maxPosts: count
+        maxPosts: count,
       });
     })
     .catch(error => {
