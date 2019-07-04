@@ -19,28 +19,65 @@ exports.insert = (data,res) => {
 };
 
 exports.get = (data, res) => {
-
-    let fetchedData;
-    data
-    .find()
-    .then(documents => {
-      fetchedData = documents;
-      return data.countDocuments();
-    })
-    .then(count => {
-      res.status(200).json({
-        message: "Posts fetched successfully!",
-        datas: fetchedData,
-        maxPosts: count,
-      });
-    })
-    .catch(error => {
-      console.log(error)
-      res.status(500).json({
+  let fetchedData;
+  let countData;
+  data
+  .find({top: null})
+  .then(documents => {
+    fetchedData = documents;
+    return data.countDocuments();
+  })
+  .then(count => {
+    countData = count;
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({
         message: "Fetching posts failed!"
-      });
     });
+  })
+
+  data
+  .find({top:false})
+  .then(documents =>{
+    res.status(200).json({
+      message: "Posts fethed successfully!",
+      datas:[...fetchedData, ...documents],
+      maxPosts: countData + 1,
+    })
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({
+      mesasge: "Fetching posts failed!"
+    });
+  })
+  
 }
+
+// exports.get = (data, res) => {
+
+//     let fetchedData;
+//     data
+//     .find()
+//     .then(documents => {
+//       fetchedData = documents;
+//       return data.countDocuments();
+//     })
+//     .then(count => {
+//       res.status(200).json({
+//         message: "Posts fetched successfully!",
+//         datas: fetchedData,
+//         maxPosts: count,
+//       });
+//     })
+//     .catch(error => {
+//       console.log(error)
+//       res.status(500).json({
+//         message: "Fetching posts failed!"
+//       });
+//     });
+// }
 
 exports.delete = (data, id, res) => {
         data
