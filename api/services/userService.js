@@ -47,6 +47,7 @@ exports.login = (model,user, res) => {
             expiresIn: 3600,
             userId: fetchedUser._id,
             name:fetchedUser.name
+
         });
     })
     .catch(err => {
